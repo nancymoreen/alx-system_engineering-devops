@@ -1,21 +1,4 @@
 #!/usr/bin/env bash
-#Script that displays a list of currently running processes
+# Bash script that displays a list of currently running processes
 
-printf "%-10s %-10s %-4s %-4s %-6s %-5s %-8s %-6s %-8s\n" "USER" "PID" "%CPU"
-"%MEM" "VSZ" "RSS" "TTY" "STAT" "COMMAND"
-
-while read -r user pid cpu mem vsz rss tty stat start time command;
-do
-	indent=""
-	for ((i=0; i<$((4*$((depth-1)))); i++));
-	do
-		indent+=" "
-	done
-
-	printf "%-10s %-10s %-4s %-4s -6s %-5s %-8s %-6s %s%s\n" "$user"
-	"$pid" "$cpu" "$mem" "$vsz" "$rss" "$tty" "$stat" "$indent" "$command"
-
-	depth=$((depth + 1))
-done < <((ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --no-headers)
-
-depth=1
+ps -auxf
