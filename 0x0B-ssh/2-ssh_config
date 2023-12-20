@@ -1,3 +1,3 @@
-Host 255193-web-01_or_18.204.3.90
+Host 255193-web-01_or_35.174.207.167
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
