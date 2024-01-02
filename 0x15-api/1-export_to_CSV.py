@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Using a REST API for TODO progress of employees"""
+"""Using a REST API for todo lists of employees"""
+
 
 import requests
 import sys
@@ -20,13 +21,13 @@ def fetch_employee_todo_progress(employee_id):
         user_data = user_response.json()
         todos_data = todos_response.json()
 
-        completed_tasks = [task['title'] for task in todos_data if task['completed']]
-        total_tasks = len(todos_data)
         employee_name = user_data['name']
+        total_tasks = len(todos_data)
+        completed_tasks = [task for task in todos_data if task['completed']]
 
         print(f"Employee {employee_name} is done with tasks({len(completed_tasks)}/{total_tasks}):")
         for task in completed_tasks:
-            print(f"\t{task}")
+            print(f"\t{task['title']}")
 
     except requests.RequestException as e:
         print(f"An error occurred: {e}")
