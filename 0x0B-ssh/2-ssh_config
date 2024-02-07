@@ -1,4 +1,7 @@
-Host 35.174.207.167
-    IdentityFile ~/.ssh/school
-    PasswordAuthentication no
+#!/usr/bin/env bash
+# SSH Client Configuration
 
+Host *
+	PasswordAuthentication no
+#   	HostbasedAuthentication no
+    	IdentityFile ~/.ssh/school
